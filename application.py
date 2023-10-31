@@ -19,4 +19,4 @@ def about_us():
     return f"Name: {name} <br> Course: {course} <br> Year: {year} <br> CCA's: {ccas_str}"
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=5000)
