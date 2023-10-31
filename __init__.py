@@ -4,7 +4,7 @@ from main_routes import main
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET KEY'] = 'randomString'
+    app.config['SECRET_KEY'] = 'wtfThisIsHard'
     CORS(app)
 
     app.register_blueprint(main)
