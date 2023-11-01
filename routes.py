@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request 
+from flask import Blueprint, jsonify, request
 from __init__ import collection
 from main_routes import main
 
@@ -9,30 +9,16 @@ def index():
     data = 'Hello Backend'
     return jsonify(data), 201
 
-@main.route('/about_me', methods=['GET', 'POST'])
+@main.route('/about_me', methods=['POST'])
 def about_us():
-    about_me_data = {
-        'name': '',
-        'course': '',
-        'year': '',
-        'ccas': ''
-    }
+    json_data = request.get_json()
 
-    if request.method == 'GET':
-        return jsonify(about_me_data), 200
+    name = json_data['name']
+    course = json_data['course']
+    year = json_data['year']
+    ccas = json_data['ccas']
 
-    if request.method == 'POST':
-        json_data = request.get_json()
-
-        if json_data:
-            about_me_data['name'] = json_data['name']
-            about_me_data['course'] = json_data['course']
-            about_me_data['year'] = json_data['year']
-            about_me_data['ccas'] = json_data['ccas']
-
-            return jsonify({'message': 'Data received successfully'}), 201
-        else:
-            return jsonify({'message': 'Invalid JSON data'}), 404
+    return jsonify({'Name': name, 'Course': course, 'Year': year, 'CCAs': ccas})
 
 # @main.route('/add_item', methods=['POST'])
 # def add_item():
