@@ -5,7 +5,7 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
     data = 'Hello Backend'
-    return jsonify(data)
+    return jsonify(data), 201
 
 @main.route('/about_me', methods=['POST', 'GET'])
 def about_me():
@@ -23,17 +23,17 @@ def about_me():
         year = json_data['year']
         ccas = json_data['ccas']
 
-        return jsonify({'Name': name, 'Course': course, 'Year': year, 'CCAs': ccas})
+        return jsonify({'Name': name, 'Course': course, 'Year': year, 'CCAs': ccas}), 201
     
     if request.method == "GET":
-        return jsonify(json_data)
+        return jsonify(json_data), 201
 
-@main.route('/add_item', methods=['POST'])
-def add_item():
-    try:
-        if request.method == "POST":
-            print("Received POST Request")
-            return "Done", 201 
-    except Exception as e:
-        print(f"Error : {e}") 
-    return "Can't add", 404
+# @main.route('/add_item', methods=['POST'])
+# def add_item():
+#     try:
+#         if request.method == "POST":
+#             print("Received POST Request")
+#             return "Done", 201 
+#     except Exception as e:
+#         print(f"Error : {e}") 
+#     return "Can't add", 404
