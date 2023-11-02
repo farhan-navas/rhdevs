@@ -1,24 +1,24 @@
-from flask import Blueprint, jsonify, request
-from __init__ import collection
-from main_routes import main
+# from flask import Blueprint, jsonify, request
+# # from __init__ import collection
+# from main_routes import main
 
-main = Blueprint('main', __name__)
+# main = Blueprint('main', __name__)
 
-@main.route('/')
-def index():
-    data = 'Hello Backend'
-    return jsonify(data), 201
+# @main.route('/')
+# def index():
+#     data = 'Hello Backend'
+#     return jsonify(data), 201
 
-@main.route('/about_me', methods=['POST'])
-def about_us():
-    json_data = request.get_json()
+# @main.route('/about_me', methods=['POST'])
+# def about_me():
+#     json_data = request.get_json()
 
-    name = json_data['name']
-    course = json_data['course']
-    year = json_data['year']
-    ccas = json_data['ccas']
+#     name = json_data['name']
+#     course = json_data['course']
+#     year = json_data['year']
+#     ccas = json_data['ccas']
 
-    return jsonify({'Name': name, 'Course': course, 'Year': year, 'CCAs': ccas})
+#     return jsonify({'Name': name, 'Course': course, 'Year': year, 'CCAs': ccas})
 
 # @main.route('/add_item', methods=['POST'])
 # def add_item():
