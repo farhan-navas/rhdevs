@@ -1,4 +1,13 @@
 from flask import Blueprint, jsonify, request
+import pymongo
+from pymongo import MongoClient
+import certifi
+
+ca_file = certifi.where()
+cluster = MongoClient("mongodb+srv://farhanmnavas:1234farhan5678@cluster0.vmoxzj4.mongodb.net/?retryWrites=true&w=majority", tlsCAFile=ca_file)
+
+db = cluster["rhdevs"]
+collection = db["farhan"]
 
 main = Blueprint('main', __name__)
 
@@ -22,6 +31,8 @@ def about_me():
         course = json_data['course']
         year = json_data['year']
         ccas = json_data['ccas']
+
+        collection.insert_one(json_data)
 
         return jsonify({'Name': name, 'Course': course, 'Year': year, 'CCAs': ccas}), 201
     
